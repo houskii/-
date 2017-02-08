@@ -1,3 +1,4 @@
+import 字符串问题.*;
 import 排序问题.*;
 
 /**
@@ -5,11 +6,7 @@ import 排序问题.*;
  */
 public class MainTest {
     public static void main(String[] args){
-        三色问题 test = new 三色问题();
-        int[] a = {2,2,0,2,0};
-        test.sortThreeColor(a,5);
-        for (int i : a) {
-            System.out.print(i+" ");
-        }
+        句子的逆序 test = new 句子的逆序();
+        System.out.println(test.reverseSentence("ABC ED FG", 47));
     }
 }
