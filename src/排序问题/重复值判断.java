@@ -5,10 +5,10 @@ package 排序问题;
  *
  *
  * 请设计一个高效算法，判断数组中是否有重复值。必须保证额外空间复杂度为O(1)。
- 给定一个int数组A及它的大小n，请返回它是否有重复值。
- 测试样例：
- [1,2,3,4,5,5,6],7
- 返回：true
+ * 给定一个int数组A及它的大小n，请返回它是否有重复值。
+ * 测试样例：
+ * [1,2,3,4,5,5,6],7
+ * 返回：true
  */
 public class 重复值判断 {
     public boolean checkDuplicate(int []a) {
@@ -22,7 +22,6 @@ public class 重复值判断 {
         }
         int index = a[0];
         for(int i=1;i<n;i++){
-            System.out.print(a[i]+" ");
             if(a[i]==index){
                 return true;
             }
