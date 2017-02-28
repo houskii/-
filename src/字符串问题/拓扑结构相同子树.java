@@ -12,59 +12,52 @@ import java.util.LinkedList;
  */
 public class 拓扑结构相同子树 {
     public boolean chkIdentical(TreeNode A, TreeNode B) {
-        LinkedList<Integer> list1=  new LinkedList<>();
-        LinkedList<Integer> list2 = new LinkedList<>();
-        traversalTree(A,list1);
-        traversalTree(B,list2);
         StringBuilder builder1 = new StringBuilder();
-        for (int i:list1){
-            builder1.append(i);
-        }
-        String str1 = builder1.toString();
-
-
         StringBuilder builder2 = new StringBuilder();
-        for (int i:list1){
-            builder2.append(i);
-        }
-        String str2 = builder2.toString();
+        traversalTree(A,builder1);
+        traversalTree(B,builder2);
 
         // write code here
-        return sunday(list1,list2);
+        return sunday(builder1.toString(),builder2.toString());
     }
 
-    void traversalTree(TreeNode t,LinkedList<Integer> list){
+    void traversalTree(TreeNode t,StringBuilder builder){
         if (t!=null){
-            list.add(t.val);
-            traversalTree(t.left,list);
-            traversalTree(t.right,list);
+            builder.append(t.val+"!");
+            traversalTree(t.left,builder);
+            traversalTree(t.right,builder);
+        }else {
+            builder.append("#!");
         }
     }
 
-    boolean sunday(LinkedList<Integer> list1,LinkedList<Integer> list2){
-        int tSize = list1.size();
-        int pSize = list2.size();
-        final int SIZE = 10;
+    boolean sunday(String string1,String string2){
+        int tSize = string1.length();
+        int pSize = string2.length();
+        final int SIZE = 150;
         int[] move = new int[SIZE];
         for (int i = 0;i<SIZE-1;i++){
             move[i] = pSize;
         }
 
         for (int i = 0;i<pSize;i++){
-            move[list2.get(i)] = pSize-i;
+            move[string2.charAt(i)] = pSize-i;
         }
 
         int s = 0;
         int j;
         while(s<=tSize-pSize){
             j = 0;
-            while(list1.get(s+j)==list2.get(j)){
+            while(string1.charAt(s+j)==string2.charAt(j)){
                 j++;
                 if (j>=pSize){
                     return true;
                 }
             }
-            s+= move[list1.get(s+pSize)];
+            if (s+pSize>=tSize){
+                return false;
+            }
+            s+= move[string1.charAt(s+pSize)];
         }
         return false;
     }

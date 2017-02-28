@@ -34,7 +34,6 @@ public class 句子的逆序 {
         int mid = (start+end)/2;
         for (int i =start;i<=mid;i++){
             int j = end-i+start;
-            System.out.println(i + " " + j);
             char tmp = a[i];
             a[i] = a[j];
             a[j] = tmp;

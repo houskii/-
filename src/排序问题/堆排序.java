@@ -10,15 +10,10 @@ public class 堆排序 {
         }
         for (int i= a.length-1;i>0;i--){
             swap(a,0,i);
-            System.out.println("i:"+i+" a[i]:"+a[i]);
             headAdjustMax(a,0,i);
             for (int c:a){
                 System.out.print(c+" ");
             }
-
-            System.out.println();
-            System.out.println();
-            System.out.println();
         }
         return a;
     }

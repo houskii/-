@@ -14,22 +14,22 @@ public class 三色排序 {
         final int MID = 1;
         final int RIGHT = 2;
         // write code here
-        int i= -1;
-        int j = n;
-        int k = 0;
-        while (k!=j){
-            if (A[k]==LEFT){
-                swap(A,k,++i);
-                if (k<=i){
-                    k=i+1;
+        int left= -1;
+        int right = n;
+        int cur = 0;
+        while (cur!=right){
+            if (A[cur]==LEFT){
+                swap(A,cur,++left);
+                if (cur<=left){
+                    cur=left+1;
                 }
-            }else if (A[k]==RIGHT){
-                swap(A,k,--j);
-                if (k>=j){
-                    k=j-1;
+            }else if (A[cur]==RIGHT){
+                swap(A,cur,--right);
+                if (cur>=right){
+                    cur=right-1;
                 }
-            }else if (A[k]==MID){
-                k++;
+            }else if (A[cur]==MID){
+                cur++;
             }
         }
         return A;
